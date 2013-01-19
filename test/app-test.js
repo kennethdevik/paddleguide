@@ -37,12 +37,10 @@
     },
 
     "create guide and fetch it": function (done) {
-      request({
-        method: 'POST',
+      request.post({
         uri: "http://localhost:5050/guides",
         json: {river: "bua", grade: 3, description: "Ei elv"}}, function (err, res, body) {
         request.get("http://localhost:5050/guides", function (err, res, body) {
-          debugger;
           var object = JSON.parse(body);
           assert.equals(object.length, 1);
           assert.equals(object[0].river, "bua");

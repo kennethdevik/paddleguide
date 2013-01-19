@@ -12,12 +12,10 @@
 
 // Database
 
-  var Schema = mongoose.Schema;
-
-  var Guide = new Schema({
+  var Guide = new mongoose.Schema({
     river: { type: String, required: true },
     description: { type: String, required: true },
-    grade: { type: Number, unique: true, min: 1, max: 6 },
+    grade: { type: Number, required: true, min: 1, max: 6 },
     modified: { type: Date, 'default': Date.now }
   });
 
