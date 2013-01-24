@@ -53,8 +53,10 @@
     this.dbName = 'guide';
 
     this.open = function (port) {
+      this.port = process.env.PORT || port || this.port;
       mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/' + this.dbName);
-      server.listen(process.env.PORT || port || this.port);
+      server.listen(this.port);
+      console.log("Listening on port " + this.port);
     };
 
     this.close = function (callback) {
